@@ -1,16 +1,18 @@
-# Importing kivy classes as parent classes for everything we will do in the app
+
 from kivy.app import App
 from kivy.uix.button import Button
 
-# Creating the App class - always is a child class of kivy.App
+
+class FunkyButton(Button):
+    def __init__(self,**kwargs):
+        super(FunkyButton,self).__init__(**kwargs)
+        self.text="Funky Button"
+        self.pos=(100,100)
+        self.size_hint=(0.25, 0.25)
+
 class LanguageLearnerApp(App):
-    # Building the app, ie adding widgets
     def build(self):
-        return Button(
-            text="Hello World",
-            pos=(50,50),
-            size_hint=(0.8,0.8)
-            )
+        return FunkyButton()
 
 if __name__=="__main__":
     LanguageLearnerApp().run()
